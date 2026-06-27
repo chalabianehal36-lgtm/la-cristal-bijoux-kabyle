@@ -1,8 +1,5 @@
 <?php
-/**
- * commande.php — Enregistrement d'une commande
- * La Cristal des Bijoux Kabyle
- */
+
 
 session_start();
 header('Content-Type: text/html; charset=utf-8');
