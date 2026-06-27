@@ -1,8 +1,5 @@
 <?php
-/**
- * login.php — Authentification utilisateur
- * La Cristal des Bijoux Kabyle
- */
+
 
 session_start();
 header('Content-Type: text/html; charset=utf-8');
