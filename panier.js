@@ -1,7 +1,4 @@
-/**
- * panier.js — Gestion du panier (localStorage)
- * La Cristal des Bijoux Kabyle
- */
+
 
 // ── Clé de stockage ──────────────────────────────────────────────────────────
 const PANIER_KEY = 'cristal_panier';
