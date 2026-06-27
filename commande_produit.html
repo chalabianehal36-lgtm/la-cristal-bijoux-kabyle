@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commande Produit — La Cristal des Bijoux Kabyle</title>
+  <link rel="stylesheet" href="commande_produit.css?v=13">
+  <style>
+    /* ── Bouton panier ── */
+    .btn-panier {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #6b8e5a, #4a7a3a);
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      width: 100%;
+    }
+    .btn-panier:hover {
+      background: linear-gradient(135deg, #5a7d4a, #3a6a2a);
+      transform: translateY(-1px);
+    }
+
+    /* ── Lien vers le panier ── */
+    .panier-link {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      background: rgba(212,163,115,0.95);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 200;
+      transition: 0.3s;
+    }
+    .panier-link:hover {
+      background: rgba(185,123,71,0.95);
+      transform: translateY(-2px);
+    }
+    .cart-badge {
+      background: #e74c3c;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: rgba(45,160,100,0.95);
+      color: white;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: 0.4s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ── Séparateur ── */
+    .sep { height: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- Lien vers le panier -->
+  <a href="panier.html" class="panier-link">
+    🛒 Mon panier
+    <span class="cart-badge" id="cart-badge">0</span>
+  </a>
+
+  <h1>Commander le produit</h1>
+
+  <form method="POST" action="commande.php" id="orderForm">
+    <table border="0" width="45%">
+      <tr>
+        <td rowspan="6" class="img">
+          <img id="product-img" src="" width="200px" height="190px" style="border-radius:14px;">
+        </td>
+        <td><h4>Vendeur :</h4></td>
+        <td><input type="text" id="seller" name="Vendeur" readonly></td>
+      </tr>
+      <tr>
+        <td><h4>Prix :</h4></td>
+        <td><input type="text" id="price" name="num" readonly></td>
+      </tr>
+      <tr>
+        <td><h4>Réf :</h4></td>
+        <td><input type="text" id="ref" name="reference" readonly></td>
+      </tr>
+      <tr>
+        <td><h4>Quantité :</h4></td>
+        <td><input type="number" id="quantite" name="quantite" min="1" value="1" required></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Commander directement" onclick="return validation_commande();">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button type="button" class="btn-panier" onclick="ajouterPanier()">
+            🛒 Ajouter au panier
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Données produits -->
+  <script>
+    const products = {
+      1:  { name: "Le Bracelet", price: "33 000 DZD", image: "IMAGES/A10.jpg", ref: "M34701" },
+      2:  { name: "Le Bracelet", price: "24 000 DZD", image: "IMAGES/A1.jpg",  ref: "M34702" },
+      3:  { name: "Le Bracelet", price: "48 900 DZD", image: "IMAGES/A8.jpg",  ref: "M34703" },
+      4:  { name: "Le Bracelet", price: "57 500 DZD", image: "IMAGES/A11.jpg", ref: "M34704" },
+      5:  { name: "Le Bracelet", price: "17 900 DZD", image: "IMAGES/A9.jpg",  ref: "M34705" },
+      6:  { name: "La Parure",   price: "50 700 DZD", image: "IMAGES/B1.jpg",  ref: "M34706" },
+      7:  { name: "La Parure",   price: "56 000 DZD", image: "IMAGES/B2.jpg",  ref: "M34707" },
+      8:  { name: "La Parure",   price: "29 900 DZD", image: "IMAGES/B5.jpg",  ref: "M34708" },
+      9:  { name: "La Parure",   price: "55 900 DZD", image: "IMAGES/B4.jpg",  ref: "M34709" },
+      10: { name: "La Parure",   price: "39 000 DZD", image: "IMAGES/B3.jpg",  ref: "M34710" },
+      11: { name: "La Bague",    price: "2 900 DZD",  image: "IMAGES/C6.jpg",  ref: "M34711" },
+      12: { name: "La Boucle",   price: "7 000 DZD",  image: "IMAGES/C2.jpg",  ref: "M34712" },
+      13: { name: "La Boucle",   price: "4 900 DZD",  image: "IMAGES/C4.jpg",  ref: "M34713" },
+      14: { name: "La Bague",    price: "3 900 DZD",  image: "IMAGES/C5.jpg",  ref: "M34714" },
+      15: { name: "La Boucle",   price: "5 000 DZD",  image: "IMAGES/C1.jpg",  ref: "M34715" },
+      16: { name: "La Broche",   price: "15 000 DZD", image: "IMAGES/D7.jpg",  ref: "M34716" },
+      17: { name: "La Broche",   price: "16 000 DZD", image: "IMAGES/D3.jpg",  ref: "M34717" },
+      18: { name: "La Broche",   price: "3 800 DZD",  image: "IMAGES/D6.jpg",  ref: "M34718" },
+      19: { name: "La Broche",   price: "8 900 DZD",  image: "IMAGES/D5.jpg",  ref: "M34719" },
+      20: { name: "La Broche",   price: "4 700 DZD",  image: "IMAGES/D8.jpg",  ref: "M34720" },
+    };
+
+    let currentProduct = null;
+
+    function loadProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      currentProduct = products[id];
+
+      if (currentProduct) {
+        document.getElementById('seller').value      = currentProduct.name;
+        document.getElementById('price').value       = currentProduct.price;
+        document.getElementById('ref').value         = currentProduct.ref;
+        document.getElementById('product-img').src   = currentProduct.image;
+      } else {
+        document.body.innerHTML = "<h2 style='text-align:center;color:white;margin-top:80px;'>Produit introuvable</h2>";
+      }
+    }
+
+    // ── Validation formulaire ─────────────────────────────────────────────────
+    function validation_commande() {
+      const q = parseInt(document.getElementById("quantite").value, 10);
+      if (isNaN(q) || q < 1) {
+        alert("Veuillez entrer une quantité valide (≥ 1).");
+        return false;
+      }
+      return confirm("Quantité : " + q + "\nConfirmez-vous votre commande ?");
+    }
+
+    // ── Ajouter au panier ─────────────────────────────────────────────────────
+    function ajouterPanier() {
+      if (!currentProduct) return;
+      const q = parseInt(document.getElementById("quantite").value, 10);
+      if (isNaN(q) || q < 1) {
+        showToast("⚠️ Quantité invalide !");
+        return;
+      }
+      ajouterAuPanier(currentProduct, q);
+    }
+
+    // ── Toast local ───────────────────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    loadProduct();
+  </script>
+
+  <!-- Panier engine -->
+  <script src="panier.js"></script>
+</body>
+</html>

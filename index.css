@@ -1,0 +1,98 @@
+ 
+body {
+  background: linear-gradient(to bottom, #fffaf4, #f3e8d8);
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.titre {
+  font-size: 17px;
+  text-align: center; 
+  color: white;
+  font-style: italic;
+  background: linear-gradient(20deg, #f3e8d8, #d4a373);
+  border-radius: 8px;
+  padding: 12px;
+  text-shadow: 2px 2px 5px #8b4513;
+}
+
+.titre a {
+  background-color: #8b5e3c;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px #555;
+  display: inline-block;
+  transition: 0.3s;
+}
+.titre a:hover {
+  background-color: #a9745f;
+}
+
+
+.sous-titre {
+  background: linear-gradient(to right, #f7e7ce, #d4a373);
+  color: white;
+  border-radius: 18px;
+  text-align: center;
+  font-size: 18px; 
+  text-shadow: 2px 2px 5px #8b4513;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.pris {
+  text-align: center;
+  background: linear-gradient(20deg, #fffaf4, #d4a373);
+  padding: 10px;
+  border-radius: 25px;
+  text-shadow: 2px 2px 5px #8b4513;
+  font-weight: bold;
+}
+.pris:hover{
+Background:linear-gradient(20deg,#fdf6f0,#c97e4d);
+transform:scale(1.05);
+}
+.pris:active {
+  font-style: italic;
+  color: #8b4513;
+  font-size: 20px;
+}
+
+.image {
+  text-align: center;
+  padding: 10px;
+}
+.image img {
+  width: 155px;
+  height: 150px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.image img:hover {
+  border-radius: 30px 10px;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  background: linear-gradient(20deg, white, #D4A373);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

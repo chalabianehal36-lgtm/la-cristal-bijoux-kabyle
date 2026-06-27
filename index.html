@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css?v=14">
+  <title>La Cristal des Bijoux Kabyle</title>
+  <style>
+    /* ── Bouton panier dans le header ── */
+    .panier-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 22px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .panier-btn:hover {
+      background: rgba(255,255,255,0.28);
+      border-color: white;
+    }
+    .cart-badge {
+      background: #e74c3c;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+<table border="0" width="100%">
+  <tr>
+    <td colspan="2" class="titre"><h2>La Cristal des Bijoux Kabyle</h2></td>
+    <td colspan="1" class="titre" id="im"><img src="IMAGES/B7.jpg" width="100%" height="200px"></td>
+    <td class="titre">
+      <div class="header-actions">
+        <a href="login.html">Se connecter</a>
+        <a href="panier.html" class="panier-btn">
+          🛒
+          <span class="cart-badge" id="cart-badge">0</span>
+        </a>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" class="sous-titre"><h3>Les Bracelets</h3></td>
+  </tr>
+  <tr>
+    <td class="image"><a href="commande_produit.html?id=1"><img src="IMAGES/A10.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=2"><img src="IMAGES/A1.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=3"><img src="IMAGES/A8.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=4"><img src="IMAGES/A11.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=5"><img src="IMAGES/A9.jpg"  width="155px" height="150px"></a></td>
+  </tr>
+  <tr>
+    <td class="pris">Prix: 33 000 DZD</td>
+    <td class="pris">Prix: 24 000 DZD</td>
+    <td class="pris">Prix: 48 900 DZD</td>
+    <td class="pris">Prix: 57 500 DZD</td>
+    <td class="pris">Prix: 17 900 DZD</td>
+  </tr>
+  <tr>
+    <td colspan="5" class="sous-titre"><h3>Les Parures</h3></td>
+  </tr>
+  <tr>
+    <td class="image"><a href="commande_produit.html?id=6"><img src="IMAGES/B1.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=7"><img src="IMAGES/B2.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=8"><img src="IMAGES/B5.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=9"><img src="IMAGES/B4.jpg"  width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=10"><img src="IMAGES/B3.jpg" width="155px" height="150px"></a></td>
+  </tr>
+  <tr>
+    <td class="pris">Prix: 50 700 DZD</td>
+    <td class="pris">Prix: 56 000 DZD</td>
+    <td class="pris">Prix: 29 900 DZD</td>
+    <td class="pris">Prix: 55 900 DZD</td>
+    <td class="pris">Prix: 39 000 DZD</td>
+  </tr>
+  <tr>
+    <td colspan="5" class="sous-titre"><h3>Les Bagues et Les Boucles d'oreilles</h3></td>
+  </tr>
+  <tr>
+    <td class="image"><a href="commande_produit.html?id=11"><img src="IMAGES/C6.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=12"><img src="IMAGES/C2.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=13"><img src="IMAGES/C4.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=14"><img src="IMAGES/C5.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=15"><img src="IMAGES/C1.jpg" width="155px" height="150px"></a></td>
+  </tr>
+  <tr>
+    <td class="pris">Prix: 2 900 DZD</td>
+    <td class="pris">Prix: 7 000 DZD</td>
+    <td class="pris">Prix: 4 900 DZD</td>
+    <td class="pris">Prix: 3 900 DZD</td>
+    <td class="pris">Prix: 5 000 DZD</td>
+  </tr>
+  <tr>
+    <td colspan="5" class="sous-titre"><h3>Les Broches</h3></td>
+  </tr>
+  <tr>
+    <td class="image"><a href="commande_produit.html?id=16"><img src="IMAGES/D7.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=17"><img src="IMAGES/D3.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=18"><img src="IMAGES/D6.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=19"><img src="IMAGES/D5.jpg" width="155px" height="150px"></a></td>
+    <td class="image"><a href="commande_produit.html?id=20"><img src="IMAGES/D8.jpg" width="155px" height="150px"></a></td>
+  </tr>
+  <tr>
+    <td class="pris">Prix: 15 000 DZD</td>
+    <td class="pris">Prix: 16 000 DZD</td>
+    <td class="pris">Prix: 3 800 DZD</td>
+    <td class="pris">Prix: 8 900 DZD</td>
+    <td class="pris">Prix: 4 700 DZD</td>
+  </tr>
+</table>
+
+<script src="panier.js"></script>
+</body>
+</html>

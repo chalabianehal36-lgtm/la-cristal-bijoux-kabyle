@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Panier — La Cristal des Bijoux Kabyle</title>
+  <link rel="stylesheet" href="panier.css">
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <h1>🛒 Mon Panier</h1>
+    <a href="index.html">← Retour au catalogue</a>
+  </div>
+
+  <!-- ── Container principal ── -->
+  <div class="container">
+    <h2 class="page-title">✨ La Cristal des Bijoux Kabyle</h2>
+
+    <!-- Zone affichée si panier vide -->
+    <div class="empty-panier" id="emptyMsg" style="display:none;">
+      <span class="icon">🛍️</span>
+      <p>Votre panier est vide</p>
+      <a href="index.html" class="btn-catalogue">Découvrir nos bijoux</a>
+    </div>
+
+    <!-- Liste des articles -->
+    <div class="panier-wrapper" id="panierList"></div>
+
+    <!-- Résumé & actions -->
+    <div class="summary-card" id="summaryCard" style="display:none;">
+      <div class="summary-row">
+        <span>Nombre d'articles</span>
+        <span id="totalItems">0</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span id="totalPrice">0 DZD</span>
+      </div>
+
+      <div class="actions">
+        <button class="btn-vider" onclick="viderPanier()">🗑️ Vider le panier</button>
+        <button class="btn-commander" onclick="ouvrirModal()">✅ Confirmer la commande</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Modal de confirmation ── -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <h3>📦 Récapitulatif de commande</h3>
+      <p>Veuillez vérifier votre commande avant de confirmer.</p>
+      <div class="modal-items" id="modalItems"></div>
+      <div class="modal-total" id="modalTotal"></div>
+      <div class="modal-actions">
+        <button class="modal-cancel" onclick="fermerModal()">Annuler</button>
+        <button class="modal-confirm" onclick="confirmerCommande()">Commander →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Toast ── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="panier.js"></script>
+</body>
+</html>

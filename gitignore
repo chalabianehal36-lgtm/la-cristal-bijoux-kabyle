@@ -1,0 +1,17 @@
+# ── Configuration sensible (NE JAMAIS committer) ──
+config.php
+
+# ── Système ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Éditeurs ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── PHP ──
+*.log
+/vendor/
