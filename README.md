@@ -135,7 +135,7 @@ CREATE TABLE commande_produit (
 
 ## 👤 Auteur
 
-**[Nehal Chalabia]**
+**Nehal Chalabia**
 Étudiant en informatique — Wilaya de Sétif, Algérie
 
 📧 Email: chalabianehal36@gmail.com 
