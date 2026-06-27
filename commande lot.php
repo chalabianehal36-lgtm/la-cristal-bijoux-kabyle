@@ -1,8 +1,5 @@
 <?php
-/**
- * commande_lot.php — Enregistrement de tout le panier en une seule requête
- * La Cristal des Bijoux Kabyle
- */
+
 
 session_start();
 header('Content-Type: application/json; charset=utf-8');
