@@ -1,8 +1,5 @@
 <?php
-/**
- * inscription.php — Création d'un compte client
- * La Cristal des Bijoux Kabyle
- */
+
 
 session_start();
 header('Content-Type: text/html; charset=utf-8');
